@@ -8,7 +8,7 @@ There are two possible options to run cluster:
 
 How to install, configure and run single master cluster read in [singlemaster.MD file](./singlemaster.MD). This setup is tested and verified multiple times.  
 
-How to install, configure and run multi master cluster read in [multimaster.MD file](./multiemaster.MD). This setup is only in testing phase.  
+How to install, configure and run multi master cluster read in [multimaster.MD file](./multimaster.MD). This setup is only in testing phase.  
 
 [Flannel.yml](./flannel.yml) file serves file to install simple overlay network that provides an easy way to configure a layer 3 network fabric designed for Kubernetes. Read more about cluster networking on [official documentation](https://kubernetes.io/docs/concepts/cluster-administration/networking/).
 
