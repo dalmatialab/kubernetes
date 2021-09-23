@@ -61,7 +61,7 @@ Complete the initialization with the following (**only on master nodes**):
 
 Initialize one of the following network CNIs (**only on one master node**) - **recommended CNI is Flannel**:
 
-    $ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml     # Flannel
+    $ kubectl apply -f https://raw.githubusercontent.com/dalmatialab/kubernetes/main/flannel.yml     # Flannel
     # kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')" # Weave
     # kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/kubeadm/1.7/calico.yaml   # Calico
 
@@ -92,6 +92,9 @@ Get the number of the new token an run the following command on a new **worker n
     #EXAMPLE: sudo kubeadm join <master_ip_address>:6443 --token 25jm1l.mvbsh7s0jivozpdm --discovery-token-unsafe-skip-ca-verification
 
 Detailed instructions can be found [here](https://blog.scottlowe.org/2019/07/12/calculating-ca-certificate-hash-for-kubeadm/).
+
+**IMPORTANT NOTE**  
+If for your cluster have **DNS/network problems**, just **delete and apply** again network CNI yaml file. We notice some problems and they were gone after re-appling network CNI (**only tested for Flannel**)
 
 ### Destroying Kubernetes cluster
 
