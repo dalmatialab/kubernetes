@@ -65,10 +65,10 @@ Complete the initialization with the following (**only on master nodes**):
 
 Initialize one of the following network CNIs (**only on one master node**) - **recommended CNI is Flannel**:
 
-    $ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml     # Flannel
+    $ kubectl apply -f https://raw.githubusercontent.com/dalmatialab/kubernetes/main/flannel.yml     # Flannel
     # kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')" # Weave
     # kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/kubeadm/1.7/calico.yaml   # Calico
-
+    
 Check if the Kubernetes cluster is running correctly:
 
     $ kubectl get nodes
@@ -122,6 +122,9 @@ List all etcd cluster members (first command), find member name that match disco
 It is also posssible to add new member manually by specifing <member_ip> and <member_name>:
 
     $ ETCDCTL_API=3 etcdctl --endpoints 127.0.0.1:2379 --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt --key /etc/kubernetes/pki/etcd/server.key member add --peer-urls=http://<member_ip>:2380 <member_name>
+    
+**IMPORTANT NOTE**  
+If for your cluster have **DNS/network problems**, just **delete and apply** again network CNI yaml file. We notice some problems and they were gone after re-appling network CNI (**only tested for Flannel**)
 
 ### Destroying Kubernetes cluster
 
